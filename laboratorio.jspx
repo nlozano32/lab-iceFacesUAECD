@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:ice="http://www.icesoft.com/icefaces/component">
+<f:view>  
+    <html class="js"  xml:lang="es" dir="ltr" lang="es">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            
+            <jsp:directive.include file="./template/headRaiz.jspx"/>
+            
+        </head>
+        
+        <body class="genesis-1b section-content">
+
+        <f:loadBundle basename="co.com.sogamoxi.view.administracion.propsTxts" var="txt"/>
+            <ice:panelGroup id="container" styleClass="not-front not-logged-in node-type-story one-sidebar sidebar-right page-node-55">
+                <jsp:directive.include file="./template/topRaiz.jspx"/>
+                <ice:panelGroup id="secondary-content" styleClass="section region">
+                <jsp:directive.include file="./template/menuVertical.jspx" />    
+                <ice:panelGroup id="block-views-aa54580e28a0f00d2a1ca19ca494f287" styleClass="block block-views">
+                    <ice:panelGroup styleClass="view view-Vista2-notas-principales view-id-Vista2_notas_principales view-display-id-block_1 view-dom-id-2">
+                        <ice:panelGroup styleClass="view-content">
+                            <ice:panelGroup styleClass="skin-right item-list views-showcase clear-block">
+                                <ice:panelGroup id="node-55" styleClass="node node-promoted node-story">
+                                <ice:panelGroup styleClass="cuerpo">
+                                    
+                                   <div id="main">
+                                        <div id="main_texto">
+                                            <div id="container_header_herramientas">
+                                                <div id="main_top">
+                                                        <ul id="main_top_item2">
+                                                                <li><a href="http://www.catastrobogota.gov.co" target="_self" title="Ir al Inicio" class="first"><img src="images/icon_home.png" border="0" alt="Inicio" />Inicio</a></li>
+                                                        </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h:form id="FormRad">
+                            
+                                   <div align="center">
+                                            <ice:panelGrid border="0" cellpadding="0" cellspacing="0" width="70%">
+                                        <h:panelGroup>
+                                            <h:outputText id="msg"></h:outputText>
+                                            <h:message for="msg" infoClass="error"></h:message>	
+                                        </h:panelGroup>
+                          
+                                        
+                                       <h:panelGrid width="100%" border="0" columns="3" styleClass="standardTable" rendered="#{radicacionBC.fileCertificado == null}"
+                                            headerClass="standardTable_Header" footerClass="countryFormFooter">
+                                            <f:facet name="header">
+                                                <h:outputText id="cfH" value="LABORATORIO No. 1"/>
+                                            </f:facet>
+                                            
+                                            
+                                            <h:outputLabel value="Ingrese un código de barrio: " for="numero" styleClass="txtLabel"></h:outputLabel>
+                                            <h:inputText styleClass="txtVisualizacion" value="#{LaboratorioBC.codBarrio}" 
+                                                    required="true" maxlength="6" size="6" title="Código de barrio"/>
+                                            <f:facet name="footer">
+                                                    <h:commandButton action="#{LaboratorioBC.actionBuscarPredio}"
+                                                            value="Buscar predios" id="BuscarP"></h:commandButton>
+                                            </f:facet>
+
+                                       </h:panelGrid>
+                                       
+                                       
+                                    </ice:panelGrid>
+                                    </div>
+                                    <div align="center">
+                                    
+                                        <ice:panelGrid rendered="#{LaboratorioBC.visibleListPredio}"> 
+                                        
+                                             <h:panelGrid columns="1"
+                                                        styleClass="standardTable_prueba"
+                                                        headerClass="standardTable_Header"
+                                                        footerClass="countryFormFooter">
+                                                                    <f:facet name="header">
+                                                                        <h:outputText id="cfH2" value="Predios encontrados"/>
+                                                                    </f:facet>
+                                                                    <ice:dataTable id="dtRegistros2"
+                                                                                   styleClass="scrollerTableNoWidth"
+                                                                                   border="0" cellspacing="2"
+                                                                                   cellpadding="2"
+                                                                                   value="#{LaboratorioBC.listPrediosLab}"
+                                                                                   footerClass="standardTable_Footer"
+                                                                                   rowClasses="standardTable_Row1,standardTable_Row2"
+                                                                                   columnClasses="standardTable_ColumnCenteredM, standardTable_ColumnCenteredM, standardTable_ColumnCenteredM"
+                                                                                   var="registro">
+                                                                        <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Código de barrio"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.codigoBarrio}"/>
+                                                                        </ice:column>
+                                                                         <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Código de manzana"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.codigoManzana}"/>
+                                                                        </ice:column>
+                                                                         <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Código de predio"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.codigoPredio}"/>
+                                                                        </ice:column>
+                                                                        <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Código de construcción"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.codigoConstruccion}">
+                                                                            </ice:outputLabel>
+                                                                        </ice:column>
+                                                                        <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Código resto"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.codigoResto}"/>
+                                                                        </ice:column>
+                                                                        <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Dirección real"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.direccionReal}"/>
+                                                                        </ice:column>
+                                                                           <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Dirección de correspondencia"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.direcCorrespondencia}"/>
+                                                                        </ice:column>
+                                                                                <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Número de matrícula"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.matricula}"/>
+                                                                        </ice:column>
+                                                                        <ice:column>
+                                                                            <f:facet name="header">
+                                                                                <ice:outputText value="Valor del avalúo"/>
+                                                                            </f:facet>
+                                                                            <ice:outputLabel value="#{registro.valorAvaluo}">
+                                                                            <f:convertNumber pattern="#,##0"/></ice:outputLabel>
+                                                                        </ice:column>
+                                                                    </ice:dataTable>
+                                                                </h:panelGrid>
+                                        
+                                        </ice:panelGrid>
+
+                                    </div>
+                              <span style="color: red; font-size: 12px;">
+                                                    <ice:messages/>
+                                                </span>
+                                    
+                                   </h:form>  
+                                </ice:panelGroup> <!-- cierra el cuerpo -->
+
+                                </ice:panelGroup> <!-- node-55 -->
+                            
+                            </ice:panelGroup>
+                        </ice:panelGroup> <!-- view-content -->
+                    </ice:panelGroup> <!-- view view-Vista2-notas-principales -->
+                </ice:panelGroup> <!-- block-views -->
+            </ice:panelGroup> <!-- secondary-content -->
+            <jsp:directive.include file="./template/bottomRaiz.jspx" />    
+            <jsp:directive.include file="/template/msgCierreSistema.jspx"/>        
+            
+                
+            </ice:panelGroup>  <!-- container --> 
+            <script type="text/javascript">
+                  var _gaq = _gaq || [];
+                  _gaq.push(['_setAccount', 'UA-16685839-3']);
+                  _gaq.push(['_trackPageview']);
+                
+                  (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                  })();
+                </script>
+        </body>
+    </html>
+</f:view>
+</jsp:root>
